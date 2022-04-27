@@ -7,8 +7,8 @@ const pages = [
     directory: "/",
   },
   {
-    title: "Menu",
-    directory: "/menu",
+    title: "Biddings",
+    directory: "/order",
   },
 ];
 const settings = [
@@ -26,18 +26,6 @@ const Navbar = () => {
   const [user] = React.useState(
     JSON.parse(window.localStorage.getItem("user"))
   );
-  const [cartCount, setCartCount] = React.useState(0);
-  const [isEmployee, setIsEmployee] = React.useState(false);
-
-  React.useEffect(() => {
-    if (user?.role) {
-      setIsEmployee(
-        user.role === "chef" ||
-          user.role === "manager" ||
-          user.role === "delivery"
-      );
-    }
-  }, [user]);
 
   const logoutHandler = () => {
     window.localStorage.clear();
@@ -61,27 +49,6 @@ const Navbar = () => {
             </button>
           </Link>
         ))}
-        {user && (
-          <Link to="/discussion" key="Discussion">
-            <button type="button" className="text-lg">
-              Discussion
-            </button>
-          </Link>
-        )}
-        {isEmployee && (
-          <Link to="/biddings" key="Biddings">
-            <button type="button" className="text-lg">
-            Biddings
-            </button>
-          </Link>
-        )}
-        {user?.role === "manager" && (
-          <Link to="/user" key="users">
-            <button type="button" className="text-lg">
-              Users
-            </button>
-          </Link>
-        )}
       </div>
       {/* Far right */}
       <div className="flex gap-x-4">
@@ -95,16 +62,6 @@ const Navbar = () => {
           ))
         ) : (
           <div className="flex gap-x-6">
-            <Link to="/checkout">
-              <button type="button" className="flex gap-x-1 items-center">
-                <span>Cart</span>
-                <span className="bg-red-600 text-white rounded-full w-6 h-6">
-                  {JSON.parse(window.localStorage.getItem("cart"))
-                    ? JSON.parse(window.localStorage.getItem("cart")).length
-                    : "0"}
-                </span>
-              </button>
-            </Link>
             <Link to="/">
               <button
                 type="button"

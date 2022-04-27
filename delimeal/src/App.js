@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Landing } from "./pages";
+import { Landing, Signin, Signup, Order } from "./pages";
 import Navbar from "./components/Navbar";
 import "./App.css";
 
@@ -14,6 +14,9 @@ function App() {
         <div className="p-4">
           <Routes>
             <Route exact path="/" element={<Landing />} />
+            <Route exact path="/sign-in" element={<Signin />} />
+            <Route exact path="/sign-up" element={<Signup />} />
+            <Route exact path="/order" element={<Order />} />
           </Routes>
         </div>
       </Router>

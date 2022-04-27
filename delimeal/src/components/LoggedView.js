@@ -1,18 +1,5 @@
 import React, { Fragment } from "react";
 import axios from "axios";
-import { Menu, Popover, Transition } from "@headlessui/react";
-import {
-  ArrowNarrowLeftIcon,
-  CheckIcon,
-  HomeIcon,
-  PaperClipIcon,
-  QuestionMarkCircleIcon,
-  SearchIcon,
-  ThumbUpIcon,
-  UserIcon,
-} from "@heroicons/react/solid";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import OrderItem from "./OrderItem";
 
 const LoggedView = () => {
   const [money, setMoney] = React.useState(0);
