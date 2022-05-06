@@ -5,22 +5,38 @@ const Signin = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  // When user clicks the signin button...
   const onSubmit = async (event) => {
     event.preventDefault();
-
+    // make API call to check the input email and password using the API endpoint
     await axios
-      .post("/user/signin/", { email: email, password: password })
+      .post("/user/signin/", 
+      // passing data using request.body: sending email and password input
+      { email: email, password: password })
+      // if API call is successful, then do this
       .then((res) => {
+        // check if that returned user is blacklisted or not. 
+        // if blacklisted, do this
         if (res.data.blacklisted) {
+          // popup message below
           alert("You were blacklisted. Contact admin.");
-        } else if (res.data.registered) {
+        }
+        // if not blacklisted but registered, 
+        else if (res.data.registered) {
+          // set localstorage key "user" to hold the user's data
           window.localStorage.setItem("user", JSON.stringify(res.data));
+          // direct user to home page
           window.location.href = "/";
-        } else {
+        } 
+        // if not blacklist and not registered... meaning if user is not registerd: do this ...
+        else {
+          // popup message to user saying this..
           alert("You are not registered. Please wait for admin.");
         }
       })
+      // if API call is unsuccessful, then do this
       .catch((err) => {
+        // popup error message
         alert(err);
       });
   };

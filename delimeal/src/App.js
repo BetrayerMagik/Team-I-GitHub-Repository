@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Landing, Signin, Signup, Order } from "./pages";
+import { Landing, Signin, Signup, Order, User } from "./pages";
 import Navbar from "./components/Navbar";
 import "./App.css";
 
@@ -17,6 +17,7 @@ function App() {
             <Route exact path="/sign-in" element={<Signin />} />
             <Route exact path="/sign-up" element={<Signup />} />
             <Route exact path="/order" element={<Order />} />
+            <Route exact path="/user" element={<User />} />
           </Routes>
         </div>
       </Router>

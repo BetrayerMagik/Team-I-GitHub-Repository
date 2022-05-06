@@ -49,6 +49,14 @@ const Navbar = () => {
             </button>
           </Link>
         ))}
+        {/* Ternary statement to check if the signed in user is manager or not */}
+        {user?.role === "manager" && (
+          <Link to="/user" key="users">
+            <button type="button" className="text-lg">
+              Users
+            </button>
+          </Link>
+        )}
       </div>
       {/* Far right */}
       <div className="flex gap-x-4">
